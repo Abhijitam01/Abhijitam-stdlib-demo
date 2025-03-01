@@ -1,10 +1,10 @@
 {
   "private": true,
   "scripts": {
-    "start": "ts-node -P tsconfig.server.json server/index.ts",
-    "build": "tsc",
-    "dev": "concurrently \"esbuild src/index.tsx --bundle --outfile=public/bundle.js --watch\" \"ts-node server/index.ts\""
-  },
+  "start": "ts-node -P tsconfig.server.json server/index.ts",
+  "build": "esbuild src/index.tsx --bundle --outfile=public/bundle.js --target=es6 --platform=browser",
+  "dev": "concurrently \"esbuild src/index.tsx --bundle --outfile=public/bundle.js --watch\" \"ts-node -P tsconfig.server.json server/index.ts\""
+},
   "dependencies": {
     "@stdlib/plot": "^0.3.3",
     "@stdlib/stats": "^0.3.3",

@@ -8,13 +8,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app: Express = express();
+app.use(express.json())
 const router = express.Router();
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false,
-  },
+  ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
 });
+
 
 router.use(express.static(path.join(__dirname, "../public")));
 
