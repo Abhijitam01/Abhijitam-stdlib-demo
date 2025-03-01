@@ -1,14 +1,21 @@
 {
   "private": true,
+  "scripts": {
+    "dev": "tsc -b && node dist/index.js"
+  },
   "dependencies": {
     "@stdlib/plot": "^0.3.3",
     "@stdlib/stats": "^0.3.3",
     "@stdlib/stdlib": "^0.3.2",
+    "@types/dotenv": "^8.2.3",
     "@types/express": "^5.0.0",
     "@types/pg": "^8.11.11",
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "pg": "^8.13.3",
-    "typescipt": "^1.0.0",
     "typescript": "^5.8.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.8"
   }
 }

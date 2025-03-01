@@ -2,9 +2,12 @@ import express, { Express, Request, Response, Router } from "express";
 import path from "path";
 import { Pool } from "pg";
 import { Plot } from "@stdlib/plot/ctor";
-import mean = require("@stdlib/stats/mean");
+import mean from "@stdlib/stats/base/mean";
+import dotenv from "dotenv";
 
-const app: Express = express(); 
+dotenv.config();
+
+const app: Express = express();
 const router = express.Router();
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
@@ -46,9 +49,9 @@ router.get("/api/stats", async (req, res) => {
     const statuses: number[] = logs.map((log) =>
       log.status === "success" ? 1 : 0
     );
-    const durations: number[] = logs.map((log) => log.duration); 
-    const successRate: number = mean(statuses) * 100; 
-    const avgDuration: number = mean(durations); 
+    const durations: number[] = logs.map((log) => log.duration);
+    const successRate: number = mean(statuses.length , statuses , 1) * 100;
+    const avgDuration: number = mean(durations.length , durations , 1);
 
     const plot = new Plot({
       x: logs.map((log) => log.date),
@@ -66,7 +69,7 @@ router.get("/api/stats", async (req, res) => {
     });
   } catch (err) {
     console.error("Error generating stats:", err);
-    res.status(500).send("Server error"); 
+    res.status(500).send("Server error");
   }
 });
 

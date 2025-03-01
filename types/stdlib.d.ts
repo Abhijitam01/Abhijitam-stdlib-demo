@@ -9,3 +9,7 @@ declare module "@stdlib/stats/mean" {
   function mean(x: number[]): number;
   export = mean;
 }
+
+declare module "dotenv" {
+  export function config(): { parsed: { [key: string]: string } };
+}
