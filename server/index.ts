@@ -1,7 +1,7 @@
 import express, { Express, Request, Response, Router } from "express";
 import path from "path";
 import { Pool } from "pg";
-import { Plot } from "@stdlib/plot/ctor";
+// import { Plot } from "@stdlib/plot/ctor";
 import mean from "@stdlib/stats/base/mean";
 import dotenv from "dotenv";
 
@@ -50,18 +50,18 @@ router.get("/api/stats", async (req, res) => {
       log.status === "success" ? 1 : 0
     );
     const durations: number[] = logs.map((log) => log.duration);
-    const successRate: number = mean(statuses.length , statuses , 1) * 100;
-    const avgDuration: number = mean(durations.length , durations , 1);
+    const successRate: number = mean(statuses.length, statuses, 1) * 100;
+    const avgDuration: number = mean(durations.length, durations, 1);
 
-    const plot = new Plot({
-      x: logs.map((log) => log.date),
-      y: durations,
-      type: "bar",
-      title: "Build Durations Over Time",
-      xLabel: "Date",
-      yLabel: "Duration (s)",
-    });
-    console.log(plot.render());
+    // const plot = new Plot({
+    //   x: logs.map((log) => log.date),
+    //   y: durations,
+    //   type: "bar",
+    //   title: "Build Durations Over Time",
+    //   xLabel: "Date",
+    //   yLabel: "Duration (s)",
+    // });
+    // console.log(plot.render());
 
     res.json({
       successRate: successRate.toFixed(2),
