@@ -1,17 +1,23 @@
-# Dependencies
-node_modules/
 
-# Environment variables
-.env
+/node_modules/
 
-# Build output
-dist/
 
-# Logs
+/.env
+
+
+/dist/
+/public/bundle.js
+/build/
+/*.tsbuildinfo
+
 *.log
 npm-debug.log*
 
-# IDE specific files
+/.vscode/
+/.idea/
+/*.swp
+/*.swo
+
 .vscode/
 .idea/
 *.swp
